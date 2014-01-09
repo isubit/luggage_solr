@@ -1,9 +1,9 @@
-name = Solr_config
+name = luggage_solr
 description = Global configuration for Solr Faceted search
 core = 7.x
-package = Features
+package = Luggage
 version = 7.x-1.0
-project = solr_config
+project = luggage_solr
 dependencies[] = apachesolr
 dependencies[] = apachesolr_search
 dependencies[] = facetapi

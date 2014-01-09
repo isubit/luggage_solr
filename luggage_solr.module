@@ -7,7 +7,7 @@
 /**
  * Implements hook_update_projects_alter().
  */
-function solr_config_update_projects_alter(&$projects) {
+function luggage_solr_update_projects_alter(&$projects) {
   // Hide a site-specific module from the list.
-  unset($projects['solr_config']);
+  unset($projects['luggage_solr']);
 }
