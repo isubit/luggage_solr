@@ -11,3 +11,31 @@ function luggage_solr_update_projects_alter(&$projects) {
   // Hide a site-specific module from the list.
   unset($projects['luggage_solr']);
 }
+
+/**
+ * Implements hook_block_info().
+ */
+function luggage_solr_block_info() {
+  $blocks = array();
+  $blocks['luggage_solr_search'] = array(
+    'info' => t('Luggage Solr Search'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function luggage_solr_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'luggage_solr_search':
+      $block['subject'] = '';
+      $block['content'] = drupal_get_form('apachesolr_search_custom_page_search_form', NULL, NULL, 'apachesolr_search', NULL);
+      break;
+  }
+
+  return $block;
+}
