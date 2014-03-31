@@ -39,3 +39,7 @@ function luggage_solr_block_view($delta = '') {
 
   return $block;
 }
+
+function luggage_solr_form_apachesolr_search_custom_page_search_form_alter(&$form, &$form_state) {
+  $form['basic']['keys']['#title'] = '';
+}
