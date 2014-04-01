@@ -42,4 +42,6 @@ function luggage_solr_block_view($delta = '') {
 
 function luggage_solr_form_apachesolr_search_custom_page_search_form_alter(&$form, &$form_state) {
   $form['basic']['keys']['#title'] = '';
+  $form['basic']['keys']['#attributes']['placeholder'] = 'Search';
+//  $form['basic']['#attributes']['class'][] = 'solr-search-form';
 }
