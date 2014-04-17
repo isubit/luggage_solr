@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_enable()
+ */
+function luggage_solr_enable() {
+  db_update('system')
+    ->fields(array('weight' => 100000))
+    ->condition('type', 'module')
+    ->condition('name', 'luggage_solr')
+    ->execute();
+}
