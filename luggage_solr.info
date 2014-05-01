@@ -8,4 +8,5 @@ dependencies[] = apachesolr
 dependencies[] = apachesolr_search
 dependencies[] = facetapi
 dependencies[] = taxonomy_menu
+dependencies[] = entity_path
 features[features_api][] = api:2
