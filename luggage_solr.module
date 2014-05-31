@@ -51,3 +51,26 @@ function luggage_solr_form_apachesolr_search_custom_page_search_form_alter(&$for
 function luggage_solr_form_search_block_form_alter(&$form, &$form_state) {
   $form['search_block_form']['#attributes']['placeholder'] = 'Search';
 }
+
+function luggage_solr_form_search_block_form_alter(&$form, &$form_state) {
+  $form['search_block_form']['#attributes']['placeholder'] = 'Search';
+}
+
+// Drupal URL aliases cannot hold query strings; they are paths only.
+// Pathauto is doing its best to create an alias from a term and its vocabulary
+// like tags/cheese -> taxonomy/term/1234. However, when it asks entity path
+// for the uri_path of taxonomy entities, it gets the answer 'search/content'
+// along with more options in the query string. Sadly, since the query string
+// cannot be stored, pathauto ignores it and creates a URL alias like
+// tags/cheese -> search/content which is not helpful as search/content is
+// a null Apache Solr search. However, pathauto is nice enough to run a
+// drupal_alter() in pathauto_create_alias() (see pathauto.inc) which allows us
+// to restore sanity by replacing search/content with the traditional
+// taxonomy/term/1234 path. Globalredirect will do the right thing when
+// a request for taxonomy/term/1234 comes in and the user will land on
+// a Solr search with the correct term selected as a facet.
+function luggage_solr_pathauto_alias_alter($alias, $context) {
+  if (($context['module'] == 'taxonomy_term') && ($context['source'] == 'search/content')) {
+    $context['source'] = 'taxonomy/term/' . $context['data']['term']->tid;
+  }
+}
