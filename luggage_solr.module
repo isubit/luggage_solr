@@ -52,10 +52,6 @@ function luggage_solr_form_search_block_form_alter(&$form, &$form_state) {
   $form['search_block_form']['#attributes']['placeholder'] = 'Search';
 }
 
-function luggage_solr_form_search_block_form_alter(&$form, &$form_state) {
-  $form['search_block_form']['#attributes']['placeholder'] = 'Search';
-}
-
 // Drupal URL aliases cannot hold query strings; they are paths only.
 // Pathauto is doing its best to create an alias from a term and its vocabulary
 // like tags/cheese -> taxonomy/term/1234. However, when it asks entity path
