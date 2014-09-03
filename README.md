@@ -1,4 +1,4 @@
 luggage_solr
 ===========
 
-Solr configuration for itc
+Solr configuration for isubit
