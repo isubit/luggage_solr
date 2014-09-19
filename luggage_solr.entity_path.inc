@@ -16,7 +16,7 @@ function luggage_solr_entity_path_config_default() {
   $entity_path_config->cid = '3';
   $entity_path_config->instance = 'taxonomy_term';
   $entity_path_config->path_pattern = 'search/content';
-  $entity_path_config->query_pattern = 'f[0]=im_field_[term:vocabulary]%3A[term:tid]&retain-filters=1';
+  $entity_path_config->query_pattern = 'f[0]=im_field_[term:vocabulary:machine-name]%3A[term:tid]&retain-filters=1';
   $entity_path_config->fragment_pattern = '';
   $entity_path_config->config = array(
     'pathauto_cleanstring' => 0,
