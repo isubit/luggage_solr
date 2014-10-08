@@ -22,3 +22,4 @@ features[variable][] = apachesolr_search_mlt_blocks
 features[variable][] = search_active_modules
 features[variable][] = search_cron_limit
 features[variable][] = search_default_module
+github = https://raw.github.com/isubit/luggage_solr/master/luggage_solr.info
