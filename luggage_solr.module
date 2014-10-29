@@ -67,6 +67,15 @@ function luggage_solr_form_search_block_form_alter(&$form, &$form_state) {
 // a Solr search with the correct term selected as a facet.
 function luggage_solr_pathauto_alias_alter($alias, $context) {
   if (($context['module'] == 'taxonomy_term') && ($context['source'] == 'search/content')) {
-    $context['source'] = 'taxonomy/term/' . $context['data']['term']->tid;
+    // If $data['term'] is set instead of $data['taxonomy_term'] 
+    // pathauto_taxonomy_term_update_alias() is responsible.
+    // Work around that bug here.
+    if (isset($context['data']['term'])) {
+      $context['source'] = 'taxonomy/term/' . $context['data']['term']->tid;
+    }
+    // Canonical context data name is taxonomy_term.
+    if (isset($context['data']['taxonomy_term'])) {
+      $context['source'] = 'taxonomy/term/' . $context['data']['taxonomy_term']->tid;
+    }
   }
 }
