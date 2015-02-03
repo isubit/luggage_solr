@@ -14,6 +14,24 @@ function luggage_solr_update_projects_alter(&$projects) {
   unset($projects['luggage_solr']);
 }
 
+function luggage_solr_post_features_enable_feature($component) {
+  db_update('apachesolr_search_page')
+    ->fields(array(
+      'search_path' => 'search/content',
+    ))
+    ->condition('page_id', 'core_search')
+    ->execute();
+}
+
+function luggage_solr_post_features_disable_feature($component) {
+  db_update('apachesolr_search_page')
+    ->fields(array(
+      'search_path' => 'search/site',
+    ))
+    ->condition('page_id', 'core_search')
+    ->execute();
+}
+
 /**
  * Implements hook_block_info().
  */
